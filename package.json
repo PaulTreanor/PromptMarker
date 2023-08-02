@@ -1,0 +1,29 @@
+{
+  "name": "chatgpt-roles",
+  "version": "1.0.0",
+  "description": "A ChatGPT wrapper that lets you quickly switch between roles. ",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulTreanor/chatgpt-roles.git"
+  },
+  "keywords": [
+    "chatgpt",
+    "openai",
+    "electron",
+    "macos"
+  ],
+  "author": "Paul Treanor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulTreanor/chatgpt-roles/issues"
+  },
+  "homepage": "https://github.com/PaulTreanor/chatgpt-roles#readme",
+  "devDependencies": {
+    "electron": "^25.3.2"
+  }
+}
