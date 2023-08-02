@@ -1,4 +1,8 @@
+import React, { useRef } from 'react';
+
 function App() {
+  const webviewRef = useRef(null);
+
   const mystyle = {
     width: "100%",
     height: "100%"
@@ -10,9 +14,27 @@ function App() {
   };
 
   const doSomething = () => {
-    console.log("button clicked");
-  }
-  
+    const inputText = 'hello world';
+
+    const script = ` 
+      function simulateUserInput(element, text) {
+        const inputEvent = new Event('input', { bubbles: true });
+        element.focus();
+        element.value = text;
+        element.dispatchEvent(inputEvent);
+      }
+
+      var inputElement = document.querySelector('#searchbox');
+      if (inputElement) {
+        simulateUserInput(inputElement, "${inputText}");
+      }
+    `;
+
+    if (webviewRef.current) {
+      webviewRef.current.executeJavaScript(script);
+    }
+  };
+
   return (
     <>
       <p className="font-bold">hello asdf</p>
@@ -20,7 +42,7 @@ function App() {
         Button
       </button>
       <div style={mystyle}>
-        <webview src="https://www.paultreanor.com/" className="min-h-full" style={mywebview}></webview>
+        <webview ref={webviewRef} src="https://www.paultreanor.com/" className="min-h-full" style={mywebview}></webview>
       </div>   
     </>
   )
