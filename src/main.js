@@ -6,7 +6,7 @@ function createWindow () {
     height: 600,
     webPreferences: {
       nodeIntegration: false, // Important for security reasons
-      contextIsolation: true, // Important for security reasons
+      contextIsolation: true // Important for security reasons
     }
   })
 
