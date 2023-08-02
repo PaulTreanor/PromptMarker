@@ -1,35 +1,32 @@
 {
   "name": "chatgpt-roles",
-  "version": "1.0.0",
-  "description": "A ChatGPT wrapper that lets you quickly switch between roles. ",
-  "main": "src/main.js",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test": "test",
-    "start": "electron ."
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PaulTreanor/chatgpt-roles.git"
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
-  "keywords": [
-    "chatgpt",
-    "openai",
-    "electron",
-    "macos"
-  ],
-  "author": "Paul Treanor",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PaulTreanor/chatgpt-roles/issues"
-  },
-  "homepage": "https://github.com/PaulTreanor/chatgpt-roles#readme",
   "devDependencies": {
-    "electron": "^25.3.2",
-    "eslint": "^8.46.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.28.0",
-    "eslint-plugin-n": "^16.0.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.1"
-  }
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "electron": "^24.4.0",
+    "electron-builder": "^23.6.0",
+    "vite-plugin-electron": "^0.11.2",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "main": "dist-electron/main.js"
 }
