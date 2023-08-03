@@ -10,7 +10,7 @@ function App() {
   };
 
   const mywebview = {
-    "minHeight": "1200px"
+    "minHeight": "800px"
   };
 
   const AddPrompt = (inputText) => {
@@ -26,7 +26,7 @@ function App() {
         element.dispatchEvent(inputEvent);
       }
 
-      var inputElement = document.querySelector('#searchbox');
+      var inputElement = document.querySelector('#prompt-textarea');
       if (inputElement) {
         simulateUserInput(inputElement, "${inputText}");
       }
@@ -47,7 +47,7 @@ function App() {
         element.dispatchEvent(inputEvent);
       }
 
-      var inputElement = document.querySelector('#searchbox');
+      var inputElement = document.querySelector('#prompt-textarea');
       if (inputElement) {
         simulateUserInput(inputElement, "");
       }
@@ -62,7 +62,7 @@ function App() {
     <>
       <div className="flex">        
         <div style={mystyle}>
-          <webview ref={webviewRef} src="https://www.paultreanor.com/" className="min-h-full" style={mywebview}  webpreferences="contextIsolation=yes, nodeIntegration=no, enableRemoteModule=no, sandbox=yes, safeDialogs=yes, javascript=yes"></webview>
+          <webview ref={webviewRef} src="https://chat.openai.com/" className="min-h-full" style={mywebview}  webpreferences="contextIsolation=yes, nodeIntegration=no, enableRemoteModule=no, sandbox=yes, safeDialogs=yes, javascript=yes"></webview>
         </div>   
         <div id="sidebar" className="px-5 py-5 w-96 sm:w-1/4 flex flex-col">
           <button onClick={RemovePrompt} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
