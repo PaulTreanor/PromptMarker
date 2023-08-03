@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 
-export default function PromptBox({ AddPrompt }) {
-    const [title, setTitle] = useState('Prompt 1');
-    const [contents, setContents] = useState('This is the prompts contents');
+export default function PromptBox({ AddPrompt, PromptData }) {
+    const [title, setTitle] = useState(PromptData.title);
+    const [contents, setContents] = useState(PromptData.text);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleClick = () => {

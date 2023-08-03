@@ -1,6 +1,25 @@
 import { useRef } from 'react';
 import PromptBox from './PromptBox';
 
+
+const promptList = [
+  {
+    id: 1,
+    title: "Prompt 1",
+    text: "This is the first prompt"
+  },
+  {
+    id: 2,
+    title: "Prompt 2",
+    text: "This is the second prompt"
+  },
+  {
+    id: 3,
+    title: "Prompt 3",
+    text: "This is the third prompt"
+  }
+  ]
+  
 function App() {
   const webviewRef = useRef(null);
 
@@ -69,7 +88,17 @@ function App() {
             ⌦ Clear Prompt 
           </button>
           <h3 className="pt-5 text-xl font-bold">Your prompts</h3>
-          <PromptBox AddPrompt={AddPrompt}/>
+
+          <ul className="pt-5">
+            {promptList.map((prompt) => (
+              <li key={prompt.id}>
+                <PromptBox AddPrompt={AddPrompt} PromptData={prompt}/>
+              </li>
+            ))}
+          </ul>
+
+
+          
           <div>
             <button onClick={RemovePrompt} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               ➕ Add new Prompt 
