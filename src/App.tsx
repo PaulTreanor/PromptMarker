@@ -15,7 +15,7 @@ const promptList = [
   },
   {
     id: 3,
-    title: "Prompt 3",
+    title: "Code Review",
     text: "This is the third prompt"
   }
   ]
@@ -104,7 +104,7 @@ function App() {
               </button>
               <h3 className="pt-5 text-xl font-bold">Your prompts</h3>
 
-              <ul className="pt-5">
+              <ul className="">
                 {promptList.map((prompt) => (
                   <li key={prompt.id}>
                     <PromptBox AddPrompt={AddPrompt} PromptData={prompt}/>
