@@ -29,7 +29,7 @@ export default function PromptBox({ AddPrompt, PromptData }) {
     return (
         <div onDoubleClick={handleDoubleClick} onClick={handleClick} className="mt-5 border-y bg-slate-50 hover:bg-slate-100">
             <h4 className="text-lg font-bold">{title}</h4>
-            <p className=''>{contents}</p>
+            <p className='overflow-hidden overflow-ellipsis max-h-[3em] whitespace-nowrap' >{contents}</p>
 
             {isModalOpen && (
               <Modal closeModal={closeModal}>
