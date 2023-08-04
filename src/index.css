@@ -22,7 +22,7 @@ body {
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   width: 80%;
   max-width: 500px;
 }
