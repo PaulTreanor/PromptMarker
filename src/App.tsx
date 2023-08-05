@@ -1,28 +1,26 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import PromptBox from './PromptBox';
 
-
-const promptList = [
-  {
-    id: 1,
-    title: "JavaScript dev",
-    text: "I am an expert JavaScript developer. I want you to answer my questions as an expert JavaScript developer."
-  },
-  {
-    id: 2,
-    title: "Prompt 2",
-    text: "This is the second prompt"
-  },
-  {
-    id: 3,
-    title: "Code Review",
-    text: "This is the third prompt"
-  }
-  ]
   
 function App() {
   const webviewRef = useRef(null);
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
+  const [prompts, setPrompts] = useState([]);
+  // const firstRender = useRef(true)
+
+  // useEffect(() => {
+  //   if (firstRender.current) {
+  //     firstRender.current = false
+  //     return
+  //   }
+    
+  //   window.app.writeToStore(prompts)
+  // }, [prompts])
+  
+  useEffect(() => {
+    window.app.readFromStore().then((data) => setPrompts(data))
+    // console.log({prompts})
+  }, [])
 
   const mystyle = {
     width: isSidebarMinimized ? "100%" : "75%",
@@ -34,9 +32,17 @@ function App() {
     "minHeight": "800px"
   };
 
-  const AddPrompt = (inputText) => {
+  const addPromptToState = () => {
+    const prompt = {
+      title: "New Prompt",
+      text: "This is a new prompt",
+    };
+    setPrompts((prevPrompts) => [...prevPrompts, prompt]);
+  };
 
-    console.log("calling addprompt")
+  const InsertPrompt = (inputText) => {
+
+    console.log("calling InsertPrompt")
     console.log(inputText)
 
     const script = ` 
@@ -104,16 +110,16 @@ function App() {
               <h3 className="pt-5 text-xl font-bold">Your prompts</h3>
 
               <ul className="">
-                {promptList.map((prompt) => (
-                  <li key={prompt.id}>
-                    <PromptBox AddPrompt={AddPrompt} PromptData={prompt}/>
+                {prompts.map((prompt) => (
+                  <li key={prompt.title}>
+                    <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt}/>
                   </li>
                 ))}
                 <li>
                 </li>
               </ul>
 
-              <button onClick={RemovePrompt} className="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+              <button onClick={addPromptToState} className="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
                 Add new Prompt 
               </button>
               

@@ -1,3 +1,5 @@
+const { ipcRenderer, contextBridge } = require('electron');   // contextBridge lets you create an API that can be accessed from the renderer process
+
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise(resolve => {
     if (condition.includes(document.readyState)) {
@@ -90,3 +92,17 @@ window.onmessage = ev => {
 }
 
 setTimeout(removeLoading, 4999)
+
+
+const API = {
+  readFromStore: () => {
+    console.log("Reading from store")
+    return ipcRenderer.invoke('store/read', "Reading from store")
+  },
+  writeToStore: (promptsList) => {
+    return ipcRenderer.invoke('store/write', promptsList)
+  }
+}
+
+
+contextBridge.exposeInMainWorld("app", API)

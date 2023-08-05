@@ -1,8 +1,26 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
+import Store from 'electron-store'
+import defaultPrompts from './default-prompts'
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
+
+// Initialise electron-store in renderer process
+const store = new Store();
+
+// if store is empty, set default values from default-prompts.ts
+if (store.size === 0 ) {
+  store.set('prompts', defaultPrompts)
+}
+console.log({"defaultPrompts": defaultPrompts})
+
+if (store.get('prompts').length === 0) {
+  store.set('prompts', defaultPrompts)
+}
+
+
+console.log({"prompts": store.get('prompts')})
 
 let win: BrowserWindow | null
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
@@ -15,7 +33,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       webviewTag: true,
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
       // enableWebView: true // from chatgpt
     },
     width: 1000,
@@ -40,3 +58,15 @@ app.on('window-all-closed', () => {
 })
 
 app.whenReady().then(createWindow)
+
+ipcMain.handle("store/read", async (event, args) => {
+  const data = store.get('prompts')
+  console.log("Reading from store")
+  console.log({data})
+  return data
+})
+
+ipcMain.handle("store/write", async (event, args) => {
+  store.set('prompts', args)
+  return "writing to store"
+})
