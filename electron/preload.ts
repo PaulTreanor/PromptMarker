@@ -1,7 +1,7 @@
-const { ipcRenderer, contextBridge } = require('electron');   // contextBridge lets you create an API that can be accessed from the renderer process
+const { ipcRenderer, contextBridge } = require('electron') // contextBridge lets you create an API that can be accessed from the renderer process
 
-function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
-  return new Promise(resolve => {
+async function domReady (condition: DocumentReadyState[] = ['complete', 'interactive']) {
+  return await new Promise(resolve => {
     if (condition.includes(document.readyState)) {
       resolve(true)
     } else {
@@ -15,16 +15,16 @@ function domReady(condition: DocumentReadyState[] = ['complete', 'interactive'])
 }
 
 const safeDOM = {
-  append(parent: HTMLElement, child: HTMLElement) {
-    if (!Array.from(parent.children).find(e => e === child)) {
+  append (parent: HTMLElement, child: HTMLElement) {
+    if (Array.from(parent.children).find(e => e === child) == null) {
       parent.appendChild(child)
     }
   },
-  remove(parent: HTMLElement, child: HTMLElement) {
-    if (Array.from(parent.children).find(e => e === child)) {
+  remove (parent: HTMLElement, child: HTMLElement) {
+    if (Array.from(parent.children).find(e => e === child) != null) {
       parent.removeChild(child)
     }
-  },
+  }
 }
 
 /**
@@ -33,8 +33,8 @@ const safeDOM = {
  * https://projects.lukehaas.me/css-loaders
  * https://matejkustec.github.io/SpinThatShit
  */
-function useLoading() {
-  const className = `loaders-css__square-spin`
+function useLoading () {
+  const className = 'loaders-css__square-spin'
   const styleContent = `
 @keyframes square-spin {
   25% { transform: perspective(100px) rotateX(180deg) rotateY(0); }
@@ -71,14 +71,14 @@ function useLoading() {
   oDiv.innerHTML = `<div class="${className}"><div></div></div>`
 
   return {
-    appendLoading() {
+    appendLoading () {
       safeDOM.append(document.head, oStyle)
       safeDOM.append(document.body, oDiv)
     },
-    removeLoading() {
+    removeLoading () {
       safeDOM.remove(document.head, oStyle)
       safeDOM.remove(document.body, oDiv)
-    },
+    }
   }
 }
 
@@ -93,16 +93,14 @@ window.onmessage = ev => {
 
 setTimeout(removeLoading, 4999)
 
-
 const API = {
-  readFromStore: () => {
-    console.log("Reading from store")
-    return ipcRenderer.invoke('store/read', "Reading from store")
+  readFromStore: async () => {
+    console.log('Reading from store')
+    return await ipcRenderer.invoke('store/read', 'Reading from store')
   },
-  writeToStore: (promptsList) => {
-    return ipcRenderer.invoke('store/write', promptsList)
+  writeToStore: async (promptsList) => {
+    return await ipcRenderer.invoke('store/write', promptsList)
   }
 }
 
-
-contextBridge.exposeInMainWorld("app", API)
+contextBridge.exposeInMainWorld('app', API)
