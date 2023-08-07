@@ -1,13 +1,41 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import PromptBox from './PromptBox'
 import type { Prompt } from './types'
 import { v4 as uuidv4 } from 'uuid'
 
+declare global {
+  interface Window { app: any }
+}
+
 function App (): ReactElement {
   const webviewRef = useRef(null)
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
   const [prompts, setPrompts] = useState<Prompt[]>([])
+  const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false) // So we don't overwrite prompts in store with empty array initalised by useState
+
+  useEffect(() => {
+    // Read from the store when the component mounts
+    window.app.readFromStore().then((data: Prompt[]) => {
+      setPrompts(data)
+    })
+  }, [])
+
+  useEffect(() => {
+    // Read from the store when the component mounts
+    window.app.readFromStore().then((data: Prompt[]) => {
+      setPrompts(data)
+      setIsInitialDataLoaded(true)
+    })
+  }, [])
+
+  useEffect(() => {
+    // Write to the store whenever the prompts change
+    // but not on the initial render
+    if (isInitialDataLoaded) {
+      window.app.writeToStore(prompts)
+    }
+  }, [prompts, isInitialDataLoaded])
 
   const mystyle = {
     width: isSidebarMinimized ? '100%' : '75%',
