@@ -19,5 +19,8 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off" // React is always in Scope when using JSX with React 17
     }
+
+    
 }

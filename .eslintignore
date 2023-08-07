@@ -2,3 +2,4 @@ dist-electron/*.js
 .eslintrc.js
 postcss.config.js
 tailwind.config.js
+src/vite-env.d.ts

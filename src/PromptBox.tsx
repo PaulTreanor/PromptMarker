@@ -1,28 +1,35 @@
 import React, { useState } from 'react'
+import type { ReactElement } from 'react'
 import Modal from './Modal'
+import type { Prompt } from './types'
 
-export default function PromptBox ({ InsertPrompt, PromptData }) {
+interface PromptBoxProps {
+  InsertPrompt: (inputText: string) => void
+  PromptData: Prompt
+}
+
+export default function PromptBox ({ InsertPrompt, PromptData }: PromptBoxProps): ReactElement {
   const [title, setTitle] = useState(PromptData.title)
   const [contents, setContents] = useState(PromptData.text)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     InsertPrompt(contents)
   }
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setTitle(e.target.value)
   }
 
-  const handleContentsChange = (e) => {
+  const handleContentsChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setContents(e.target.value)
   }
 
-  const handleDoubleClick = () => {
+  const handleDoubleClick = (): void => {
     setIsModalOpen(true)
   }
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setIsModalOpen(false)
   }
 

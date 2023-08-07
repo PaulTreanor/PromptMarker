@@ -1,10 +1,12 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
+import type { ReactElement } from 'react'
 import PromptBox from './PromptBox'
+import type { Prompt } from './types'
 
-function App () {
+function App (): ReactElement {
   const webviewRef = useRef(null)
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
-  const [prompts, setPrompts] = useState([])
+  const [prompts, setPrompts] = useState<Prompt[]>([])
   // const firstRender = useRef(true)
 
   // useEffect(() => {
@@ -29,15 +31,16 @@ function App () {
     minHeight: '800px'
   }
 
-  const addPromptToState = () => {
-    const prompt = {
+  const addPromptToState = (): void => {
+    const prompt: Prompt = {
       title: 'New Prompt',
       text: 'This is a new prompt'
     }
     setPrompts((prevPrompts) => [...prevPrompts, prompt])
   }
 
-  const InsertPrompt = (inputText) => {
+  // Add prompt to webview chat input box
+  const InsertPrompt = (inputText: string): void => {
     console.log('calling InsertPrompt')
     console.log(inputText)
 
@@ -80,7 +83,7 @@ function App () {
     }
   }
 
-  const toggleSidebar = () => {
+  const toggleSidebar = (): void => {
     setIsSidebarMinimized(!isSidebarMinimized)
   }
 
@@ -104,7 +107,7 @@ function App () {
               <h3 className="pt-5 text-xl font-bold">Your prompts</h3>
 
               <ul className="">
-                {prompts.map((prompt) => (
+                {prompts.map((prompt: Prompt) => (
                   <li key={prompt.title}>
                     <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt}/>
                   </li>
