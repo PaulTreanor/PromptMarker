@@ -16,10 +16,9 @@ function App () {
   //   window.app.writeToStore(prompts)
   // }, [prompts])
 
-  useEffect(() => {
-    window.app.readFromStore().then((data) => { setPrompts(data) })
-    // console.log({prompts})
-  }, [])
+  // useEffect(() => {
+  //   window.app.readFromStore().then((data) => { setPrompts(data) })
+  // }, [])
 
   const mystyle = {
     width: isSidebarMinimized ? '100%' : '75%',

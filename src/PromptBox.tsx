@@ -7,7 +7,7 @@ export default function PromptBox ({ InsertPrompt, PromptData }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleClick = () => {
-    InsertPrompts(contents)
+    InsertPrompt(contents)
   }
 
   const handleTitleChange = (e) => {
