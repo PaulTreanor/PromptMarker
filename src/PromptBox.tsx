@@ -6,10 +6,11 @@ import type { Prompt } from './types'
 interface PromptBoxProps {
   InsertPrompt: (inputText: string) => void
   PromptData: Prompt
-  deletePrompt: (id: string) => void
+  DeletePrompt: (id: string) => void
+  UpdatePrompt: (id: string, newPrompt: Prompt) => void
 }
 
-export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt }: PromptBoxProps): ReactElement {
+export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, UpdatePrompt }: PromptBoxProps): ReactElement {
   const [title, setTitle] = useState(PromptData.title)
   const [contents, setContents] = useState(PromptData.text)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -24,11 +25,15 @@ export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt }: P
   }
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setTitle(e.target.value)
+    const newTitle = e.target.value
+    setTitle(newTitle)
+    UpdatePrompt(PromptData.id, { ...PromptData, title: newTitle })
   }
 
   const handleContentsChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setContents(e.target.value)
+    const newContents = e.target.value
+    setContents(newContents)
+    UpdatePrompt(PromptData.id, { ...PromptData, text: newContents })
   }
 
   const handleDoubleClick = (): void => {

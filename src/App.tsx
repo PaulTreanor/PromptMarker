@@ -28,6 +28,14 @@ function App (): ReactElement {
     console.log(prompts)
   }
 
+  const updatePrompt = (id: string, newPrompt: Prompt): void => {
+    setPrompts((prevPrompts) =>
+      prevPrompts.map((prompt) =>
+        prompt.id === id ? newPrompt : prompt
+      )
+    )
+  }
+
   // Delete prompt from state
   const deletePrompt = (id: string): void => {
     setPrompts((prevPrompts) => prevPrompts.filter((prompt) => prompt.id !== id))
@@ -100,7 +108,7 @@ function App (): ReactElement {
               <ul className="">
                 {prompts.map((prompt: Prompt) => (
                   <li key={prompt.id}>
-                    <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt} DeletePrompt={deletePrompt}/>
+                    <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt} DeletePrompt={deletePrompt} UpdatePrompt={updatePrompt}/>
                   </li>
                 ))}
                 <li>
