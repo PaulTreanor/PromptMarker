@@ -6,15 +6,21 @@ import type { Prompt } from './types'
 interface PromptBoxProps {
   InsertPrompt: (inputText: string) => void
   PromptData: Prompt
+  deletePrompt: (id: string) => void
 }
 
-export default function PromptBox ({ InsertPrompt, PromptData }: PromptBoxProps): ReactElement {
+export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt }: PromptBoxProps): ReactElement {
   const [title, setTitle] = useState(PromptData.title)
   const [contents, setContents] = useState(PromptData.text)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleClick = (): void => {
     InsertPrompt(contents)
+  }
+
+  const handleDeleteButton = (): void => {
+    DeletePrompt(PromptData.id)
+    setIsModalOpen(false)
   }
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -44,6 +50,9 @@ export default function PromptBox ({ InsertPrompt, PromptData }: PromptBoxProps)
               <Modal closeModal={closeModal}>
                 <input value={title} onChange={handleTitleChange} className="text-lg font-bold"/>
                 <textarea value={contents} onChange={handleContentsChange} className="mt-2" rows="10" cols="50"/>
+                <button onClick={handleDeleteButton} className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                  Delete Prompt
+                </button>
               </Modal>
             )}
         </div>

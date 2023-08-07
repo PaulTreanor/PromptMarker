@@ -2,25 +2,12 @@ import { useRef, useState } from 'react'
 import type { ReactElement } from 'react'
 import PromptBox from './PromptBox'
 import type { Prompt } from './types'
+import { v4 as uuidv4 } from 'uuid'
 
 function App (): ReactElement {
   const webviewRef = useRef(null)
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
   const [prompts, setPrompts] = useState<Prompt[]>([])
-  // const firstRender = useRef(true)
-
-  // useEffect(() => {
-  //   if (firstRender.current) {
-  //     firstRender.current = false
-  //     return
-  //   }
-
-  //   window.app.writeToStore(prompts)
-  // }, [prompts])
-
-  // useEffect(() => {
-  //   window.app.readFromStore().then((data) => { setPrompts(data) })
-  // }, [])
 
   const mystyle = {
     width: isSidebarMinimized ? '100%' : '75%',
@@ -33,17 +20,21 @@ function App (): ReactElement {
 
   const addPromptToState = (): void => {
     const prompt: Prompt = {
+      id: uuidv4(),
       title: 'New Prompt',
       text: 'This is a new prompt'
     }
     setPrompts((prevPrompts) => [...prevPrompts, prompt])
+    console.log(prompts)
+  }
+
+  // Delete prompt from state
+  const deletePrompt = (id: string): void => {
+    setPrompts((prevPrompts) => prevPrompts.filter((prompt) => prompt.id !== id))
   }
 
   // Add prompt to webview chat input box
   const InsertPrompt = (inputText: string): void => {
-    console.log('calling InsertPrompt')
-    console.log(inputText)
-
     const script = ` 
       function simulateUserInput(element, text) {
         const inputEvent = new Event('input', { bubbles: true });
@@ -108,8 +99,8 @@ function App (): ReactElement {
 
               <ul className="">
                 {prompts.map((prompt: Prompt) => (
-                  <li key={prompt.title}>
-                    <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt}/>
+                  <li key={prompt.id}>
+                    <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt} DeletePrompt={deletePrompt}/>
                   </li>
                 ))}
                 <li>
