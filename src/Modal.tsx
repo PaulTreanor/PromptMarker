@@ -1,6 +1,11 @@
 import type { ReactElement } from 'react'
 
-const Modal = ({ children, closeModal }): ReactElement => (
+interface ModalProps {
+  children: React.ReactNode
+  closeModal: () => void
+}
+
+const Modal = ({ children, closeModal }: ModalProps): ReactElement => (
   <div className="modal-overlay">
     <div className="modal-content">
     <button

@@ -9,8 +9,12 @@ declare global {
   interface Window { app: any }
 }
 
+interface WebViewElement extends HTMLElement {
+  executeJavaScript: (script: string) => void
+}
+
 function App (): ReactElement {
-  const webviewRef = useRef(null)
+  const webviewRef = useRef<WebViewElement | null>(null)
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false)
   const [prompts, setPrompts] = useState<Prompt[]>([])
   const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false) // So we don't overwrite prompts in store with empty array initalised by useState
@@ -86,12 +90,12 @@ function App (): ReactElement {
       }
     `
 
-    if (webviewRef.current) {
+    if (webviewRef.current != null) {
       webviewRef.current.executeJavaScript(script)
     }
   }
 
-  const RemovePrompt = () => {
+  const RemovePrompt = (): void => {
     const script = ` 
       function simulateUserInput(element, text) {
         const inputEvent = new Event('input', { bubbles: true });
@@ -106,7 +110,7 @@ function App (): ReactElement {
       }
     `
 
-    if (webviewRef.current) {
+    if (webviewRef.current != null) {
       webviewRef.current.executeJavaScript(script)
     }
   }
@@ -119,6 +123,7 @@ function App (): ReactElement {
     <>
       <div className="flex">
         <div style={mystyle}>
+          {/* eslint-disable-next-line react/no-unknown-property */}
           <webview ref={webviewRef} src="https://chat.openai.com/" className="min-h-full" style={mywebview} webpreferences="contextIsolation=yes, nodeIntegration=no, enableRemoteModule=no, sandbox=yes, safeDialogs=yes, javascript=yes"></webview>
         </div>
         <div id="sidebar" className={`px-5 ${isSidebarMinimized ? 'w-20 px-1' : 'w-96 sm:w-1/4 border-l'} flex flex-col`}>
