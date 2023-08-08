@@ -35,6 +35,7 @@ function App (): ReactElement {
     if (isInitialDataLoaded) {
       window.app.writeToStore(prompts)
     }
+    console.log({ prompts })
   }, [prompts, isInitialDataLoaded])
 
   const mystyle = {
@@ -71,6 +72,7 @@ function App (): ReactElement {
 
   // Add prompt to webview chat input box
   const InsertPrompt = (inputText: string): void => {
+    const sanitizedInputText = inputText.replace(/\n/g, '\\n')
     const script = ` 
       function simulateUserInput(element, text) {
         const inputEvent = new Event('input', { bubbles: true });
@@ -81,7 +83,7 @@ function App (): ReactElement {
 
       var inputElement = document.querySelector('#prompt-textarea');
       if (inputElement) {
-        simulateUserInput(inputElement, "${inputText}");
+        simulateUserInput(inputElement, "${sanitizedInputText}");
       }
     `
 
