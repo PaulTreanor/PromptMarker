@@ -1,9 +1,9 @@
 {
-  "name": "chatgpt-role-selector",
+  "name": "chatgpt-promptly",
   "author": "Paul Treanor",
   "license": "MIT",
   "version": "0.0.0",
-  "description": "A ChatGPT wrapper that lets you quickly switch between roles.",
+  "description": "A ChatGPT desktop app that lets you quickly switch between promptly.",
   "keywords": [
     "chatgpt",
     "openai",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PaulTreanor/chatgpt-roles.git"
+    "url": "git+https://github.com/PaulTreanor/chatgpt-promptly.git"
   },
   "scripts": {
     "dev": "vite",
