@@ -36,7 +36,6 @@ function App (): ReactElement {
     if (isInitialDataLoaded) {
       window.app.writeToStore(prompts)
     }
-    console.log({ prompts })
   }, [prompts, isInitialDataLoaded])
 
   const mystyle = {
@@ -55,7 +54,6 @@ function App (): ReactElement {
       text: 'This is a new prompt'
     }
     setPrompts((prevPrompts) => [...prevPrompts, prompt])
-    console.log(prompts)
   }
 
   const updatePrompt = (id: string, newPrompt: Prompt): void => {
@@ -142,8 +140,6 @@ function App (): ReactElement {
                     <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt} DeletePrompt={deletePrompt} UpdatePrompt={updatePrompt}/>
                   </li>
                 ))}
-                <li>
-                </li>
               </ul>
 
               <button onClick={addPromptToState} className="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
