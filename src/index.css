@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+input:focus {
+  outline: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
 body {
   width: 100vw;
   height: 100vh;

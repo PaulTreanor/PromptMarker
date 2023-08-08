@@ -1,19 +1,26 @@
 import type { ReactElement } from 'react'
 
 interface ModalProps {
+  handleDeleteButton: () => void
   children: React.ReactNode
   closeModal: () => void
 }
 
-const Modal = ({ children, closeModal }: ModalProps): ReactElement => (
-  <div className="modal-overlay">
-    <div className="modal-content">
-    <button
-        onClick={closeModal}
-        className="mb-4 px-4 py-2 font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
-    >
-        Close
-    </button>
+const Modal = ({ handleDeleteButton, children, closeModal }: ModalProps): ReactElement => (
+  <div onClick={closeModal} className="modal-overlay">
+    <div onClick={e => { e.stopPropagation() }} className="modal-content">
+    <div className='flex justify-between'>
+      <button
+          onClick={closeModal}
+          className="mb-4 px-4 py-2 font-semibold mr-2 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700"
+      >
+          Close
+      </button>
+
+      <p onClick={handleDeleteButton} className="text-red-500 hover:text-red-800 cursor-pointer text-right">
+        Delete Prompt
+      </p>
+    </div>
 
       <br />
       {children}

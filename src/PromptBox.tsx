@@ -45,21 +45,29 @@ export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, Upd
   }
 
   return (
-        <div onDoubleClick={handleDoubleClick} onClick={handleClick} className="mt-3 bg-slate-50 hover:bg-slate-100">
-            <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 className="mb-1 font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400 overflow-hidden overflow-ellipsis max-h-[3em] whitespace-nowrap">{contents}</p>
-            </div>
+    <div onClick={handleClick} className="mt-3 bg-slate-50 hover:bg-slate-100 relative">
+      <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        {/* Edit Icon */}
 
-            {isModalOpen && (
-              <Modal closeModal={closeModal}>
-                <input value={title} onChange={handleTitleChange} className="text-lg font-bold"/>
-                <textarea value={contents} onChange={handleContentsChange} className="mt-2 px-2" rows="10" cols="50"/>
-                <button onClick={handleDeleteButton} className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
-                  Delete Prompt
-                </button>
-              </Modal>
-            )}
+        <div className='flex justify-between'>
+          <h5 className="mb-1 pr-1 font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+          <div className="cursor-pointer pl-2" >
+            <svg onClick={handleDoubleClick} id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.96 122.88" width="5" height="20">
+                <title>3-vertical-dots</title>
+                <path fillRule="evenodd" d="M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Zm0,92.93a15,15,0,1,1-15,15,15,15,0,0,1,15-15Zm0-46.47a15,15,0,1,1-15,15,15,15,0,0,1,15-15Z"/>
+            </svg>
+          </div>
+
         </div>
+        <p className="font-normal text-gray-700 dark:text-gray-400 overflow-hidden overflow-ellipsis max-h-[3em] whitespace-nowrap">{contents}</p>
+      </div>
+
+      {isModalOpen && (
+        <Modal closeModal={closeModal} handleDeleteButton={handleDeleteButton}>
+          <input value={title} onChange={handleTitleChange} className="text-lg font-bold px-2 border w-full bg-gray-50 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+          <textarea value={contents} onChange={handleContentsChange} className="mt-2 px-2 w-full border rounded-lg  bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" rows="10" />
+        </Modal>
+      )}
+    </div>
   )
 }

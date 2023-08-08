@@ -12,4 +12,5 @@ The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly ad
 - Click on a prompt to add it to ChatGPT's input box
 
 ### Implementation
+
 ChatGPT Promptly is built on top of Electron, React, Tailwinds, and Vite. 
