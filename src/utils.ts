@@ -1,4 +1,4 @@
-function sanitizeStringForJS (str) {
+function sanitizeStringForJS (str: string): string {
   // Convert the string to its unicode escape sequence representation.
   // This avoids any potentially dangerous characters and sequences.
   let sanitized = ''

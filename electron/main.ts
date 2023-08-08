@@ -60,8 +60,6 @@ app.whenReady().then(createWindow)
 
 ipcMain.handle('store/read', async (event, args) => {
   const data = store.get('prompts')
-  console.log('Reading from store')
-  console.log({ data })
   return data
 })
 

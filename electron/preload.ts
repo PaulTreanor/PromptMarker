@@ -95,7 +95,6 @@ setTimeout(removeLoading, 4999)
 
 const API = {
   readFromStore: async () => {
-    console.log('Reading from store')
     return await ipcRenderer.invoke('store/read', 'Reading from store')
   },
   writeToStore: async (promptsList) => {

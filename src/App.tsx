@@ -134,12 +134,20 @@ function App (): ReactElement {
 
               <h3 className="pt-5 text-xl font-bold">Your prompts</h3>
 
-              <ul className="">
-                {prompts.map((prompt: Prompt) => (
-                  <li key={prompt.id}>
-                    <PromptBox InsertPrompt={InsertPrompt} PromptData={prompt} DeletePrompt={deletePrompt} UpdatePrompt={updatePrompt}/>
-                  </li>
-                ))}
+              <ul>
+                {prompts.map((prompt: Prompt) => {
+                  console.log(prompt)
+                  return (
+                    <li key={prompt.id}>
+                      <PromptBox
+                        InsertPrompt={InsertPrompt}
+                        PromptData={prompt}
+                        DeletePrompt={deletePrompt}
+                        UpdatePrompt={updatePrompt}
+                      />
+                    </li>
+                  )
+                })}
               </ul>
 
               <button onClick={addPromptToState} className="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
