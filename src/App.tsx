@@ -3,6 +3,7 @@ import type { ReactElement } from 'react'
 import PromptBox from './PromptBox'
 import type { Prompt } from './types'
 import { v4 as uuidv4 } from 'uuid'
+import sanitizeStringForJS from './utils'
 
 declare global {
   interface Window { app: any }
@@ -72,7 +73,7 @@ function App (): ReactElement {
 
   // Add prompt to webview chat input box
   const InsertPrompt = (inputText: string): void => {
-    const sanitizedInputText = inputText.replace(/\n/g, '\\n')
+    const sanitizedInputText = sanitizeStringForJS(inputText)
     const script = ` 
       function simulateUserInput(element, text) {
         const inputEvent = new Event('input', { bubbles: true });

@@ -54,7 +54,7 @@ export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, Upd
             {isModalOpen && (
               <Modal closeModal={closeModal}>
                 <input value={title} onChange={handleTitleChange} className="text-lg font-bold"/>
-                <textarea value={contents} onChange={handleContentsChange} className="mt-2" rows="10" cols="50"/>
+                <textarea value={contents} onChange={handleContentsChange} className="mt-2 px-2" rows="10" cols="50"/>
                 <button onClick={handleDeleteButton} className="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
                   Delete Prompt
                 </button>
