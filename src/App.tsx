@@ -134,7 +134,7 @@ function App (): ReactElement {
 
           {!isSidebarMinimized && (
             <>
-              <button onClick={RemovePrompt} className="my-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+              <button onClick={RemovePrompt} className='mt-2 mb-1 h-11 text-red-600 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold py-2 px-4 rounded-lg'>
                 Clear Prompt
               </button>
 
