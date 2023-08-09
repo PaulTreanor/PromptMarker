@@ -55,7 +55,8 @@ function App (): ReactElement {
     const prompt: Prompt = {
       id: uuidv4(),
       title: 'New Prompt',
-      text: 'This is a new prompt'
+      text: 'This is a new prompt',
+      isNew: true
     }
     setPrompts((prevPrompts) => [...prevPrompts, prompt])
   }
@@ -126,7 +127,7 @@ function App (): ReactElement {
           {/* eslint-disable-next-line react/no-unknown-property */}
           <webview ref={webviewRef} src="https://chat.openai.com/" className="min-h-full" style={mywebview} webpreferences="contextIsolation=yes, nodeIntegration=no, enableRemoteModule=no, sandbox=yes, safeDialogs=yes, javascript=yes"></webview>
         </div>
-        <div id="sidebar" className={`px-5 ${isSidebarMinimized ? 'w-20 px-1' : 'w-96 sm:w-1/4 border-l'} flex flex-col`}>
+        <div id="sidebar" className={`px-5 ${isSidebarMinimized ? 'w-24 px-1' : 'w-96 sm:w-1/4 border-l'} flex flex-col`}>
           <button onClick={toggleSidebar} className={'mt-4 mb-1 h-11 text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 font-bold py-2 px-4 rounded-lg'}>
             {isSidebarMinimized ? '▶' : 'Collapse'}
           </button>
@@ -149,6 +150,7 @@ function App (): ReactElement {
                         PromptData={prompt}
                         DeletePrompt={deletePrompt}
                         UpdatePrompt={updatePrompt}
+                        isNew={prompt.isNew}
                       />
                     </li>
                   )

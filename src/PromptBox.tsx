@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import Modal from './Modal'
 import type { Prompt } from './types'
@@ -8,12 +8,19 @@ interface PromptBoxProps {
   PromptData: Prompt
   DeletePrompt: (id: string) => void
   UpdatePrompt: (id: string, newPrompt: Prompt) => void
+  isNew: boolean
 }
 
-export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, UpdatePrompt }: PromptBoxProps): ReactElement {
+export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, UpdatePrompt, isNew }: PromptBoxProps): ReactElement {
   const [title, setTitle] = useState(PromptData.title)
   const [contents, setContents] = useState(PromptData.text)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(!!isNew)
+
+  useEffect(() => {
+    if (isNew) {
+      UpdatePrompt(PromptData.id, { ...PromptData, isNew: false })
+    }
+  }, [isNew, PromptData, UpdatePrompt])
 
   const handleClick = (): void => {
     InsertPrompt(contents)
