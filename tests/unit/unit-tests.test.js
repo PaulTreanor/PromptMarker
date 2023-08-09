@@ -1,5 +1,5 @@
 import { expect, test} from 'vitest'
-import sanitizeStringForJS from '../src/utils'
+import sanitizeStringForJS from '../../src/utils'
 
 // Test if function sanitises inputs correctly
 test('should sanitize simple strings', () => {

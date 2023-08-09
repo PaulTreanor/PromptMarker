@@ -20,7 +20,7 @@
     "lint": "npx eslint './src/**/*' './electron/**/*'",
     "lint-fix": "npx eslint './src/**/*' './electron/**/*' --fix",
     "preview": "vite preview",
-    "test": "vitest"
+    "test:unit": "vitest tests/unit/"
   },
   "dependencies": {
     "electron-store": "^8.1.0",
