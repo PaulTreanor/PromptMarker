@@ -58,7 +58,7 @@ export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, Upd
 
         <div className='flex justify-between'>
           <h5 className="mb-1 pr-1 font-bold tracking-tight text-gray-900 dark:text-white overflow-hidden">{title}</h5>
-          <div className="cursor-pointer pl-2" >
+          <div className="cursor-pointer pl-2 pr-1" >
             <svg onClick={handleDoubleClick} id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.96 122.88" width="5" height="20">
                 <title>3-vertical-dots</title>
                 <path fillRule="evenodd" d="M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Zm0,92.93a15,15,0,1,1-15,15,15,15,0,0,1,15-15Zm0-46.47a15,15,0,1,1-15,15,15,15,0,0,1,15-15Z"/>
