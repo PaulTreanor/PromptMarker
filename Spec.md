@@ -9,7 +9,6 @@
 ### Nice to haves
 - [x] Clear prompt button 
 - [x] Fast and minimal UI
-- [ ] Handling if user isn't logged in
 - [x] Delete prompts 
 
 
