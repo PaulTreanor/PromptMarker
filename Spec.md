@@ -17,7 +17,14 @@
 - [ ] Embeded webview appears
 - [ ] Toggle appears
 - [ ] Toggle includes list of meta prompts
-- [ ] Double click to add or edit meta prompts
+- [ ] PromptBox menu opens modal
 - [ ] Single click to add meta prompt to the text box
 - [ ] Clear prompt button clears the text box
+- [ ] What happens if there's no internet? 
+- [ ] Test editing prompts
+- [ ] Test deleting a prompt 
+- [ ] Test if the store data is persistent
+- [ ] Test how the app hanldes corrupted store data
+- [ ] Test invalid prompts
+- [x] Test string santizer function
  
