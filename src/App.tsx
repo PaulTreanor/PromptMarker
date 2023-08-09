@@ -129,7 +129,7 @@ function App (): ReactElement {
         </div>
         <div id="sidebar" className={`px-5 ${isSidebarMinimized ? 'w-24 px-1' : 'w-96 sm:w-1/4 border-l'} flex flex-col`}>
           <button onClick={toggleSidebar} className={'mt-4 mb-1 h-11 text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 font-bold py-2 px-4 rounded-lg'}>
-            {isSidebarMinimized ? '▶' : 'Collapse'}
+            {isSidebarMinimized ? (<img src="/chevron-right.svg" alt="vite logo" className="" />) : 'Collapse'}
           </button>
 
           {!isSidebarMinimized && (
