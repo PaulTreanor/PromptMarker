@@ -52,8 +52,8 @@ export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, Upd
   }
 
   return (
-    <div onClick={handleClick} className="mt-3 bg-slate-50 hover:bg-slate-100 relative">
-      <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div onClick={handleClick} className="">
+      <div className="mt-3 block  p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
         {/* Edit Icon */}
 
         <div className='flex justify-between'>
