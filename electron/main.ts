@@ -15,10 +15,11 @@ if (store.size === 0) {
 }
 console.log({ defaultPrompts })
 
-if (store.get('prompts').length === 0) {
+if (store.get('prompts').length === 0 || store.get('prompts').length === undefined) {
+  console.log('store is empty')
   store.set('prompts', defaultPrompts)
 }
-
+console.log(store.get('prompts').length)
 console.log({ prompts: store.get('prompts') })
 
 let win: BrowserWindow | null
