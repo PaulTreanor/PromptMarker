@@ -72,7 +72,7 @@ export default function PromptBox ({ InsertPrompt, PromptData, DeletePrompt, Upd
       {isModalOpen && (
         <Modal closeModal={closeModal} handleDeleteButton={handleDeleteButton}>
           <input value={title} onChange={handleTitleChange} className="text-lg font-bold px-2 border w-full bg-gray-50 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
-          <textarea value={contents} onChange={handleContentsChange} className="mt-2 px-2 w-full border rounded-lg  bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" rows="10" />
+          <textarea value={contents} onChange={handleContentsChange} className="mt-2 px-2 w-full border rounded-lg  bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" rows={10} />
         </Modal>
       )}
     </div>

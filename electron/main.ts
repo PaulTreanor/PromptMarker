@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
 import Store from 'electron-store'
 import defaultPrompts from './default-prompts'
+import type { Prompt } from '../src/types'
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
@@ -15,12 +16,10 @@ if (store.size === 0) {
 }
 console.log({ defaultPrompts })
 
-if (store.get('prompts').length === 0 || store.get('prompts').length === undefined) {
-  console.log('store is empty')
+const prompts = store.get('prompts') as Prompt[] | undefined
+if (prompts?.length === 0 || prompts?.length === undefined) {
   store.set('prompts', defaultPrompts)
 }
-console.log(store.get('prompts').length)
-console.log({ prompts: store.get('prompts') })
 
 let win: BrowserWindow | null
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
@@ -60,11 +59,13 @@ app.on('window-all-closed', () => {
 app.whenReady().then(createWindow)
 
 ipcMain.handle('store/read', async (event, args) => {
+  console.log({ args, event })
   const data = store.get('prompts')
   return data
 })
 
 ipcMain.handle('store/write', async (event, args) => {
+  console.log({ args, event })
   store.set('prompts', args)
   return 'writing to store'
 })

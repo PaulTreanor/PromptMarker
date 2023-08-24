@@ -1,4 +1,6 @@
-const { ipcRenderer, contextBridge } = require('electron') // contextBridge lets you create an API that can be accessed from the renderer process
+// contextBridge lets you create an API that can be accessed from the renderer process
+import type { Prompt } from '../src/types'
+const { ipcRenderer, contextBridge } = require('electron')
 
 async function domReady (condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return await new Promise(resolve => {
@@ -97,7 +99,7 @@ const API = {
   readFromStore: async () => {
     return await ipcRenderer.invoke('store/read', 'Reading from store')
   },
-  writeToStore: async (promptsList) => {
+  writeToStore: async (promptsList: Prompt[]) => {
     return await ipcRenderer.invoke('store/write', promptsList)
   }
 }
