@@ -6,6 +6,8 @@
 
 The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly add and remove stored reusable prompts in a collapsable sidebar. 
 
+> This app is a prerelease non-notarised MacOS app, which means if you want to try it out you **must build it yourself** (see "Build the app" instructions). 
+
 ### How to use 
 - Log into ChatGPT through the app. 
 - Click on the expand icon on the top right of the app to show the sidebar. 
@@ -31,3 +33,8 @@ npm run dev
 npm run test:unit
 ```
 
+**Build the app**
+```bash
+npm run build
+# Built app will be in /releases directory
+```
