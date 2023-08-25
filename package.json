@@ -1,18 +1,19 @@
 {
-  "name": "chatgpt-promptly",
+  "name": "PromptMarker",
   "author": "Paul Treanor",
   "license": "MIT",
   "version": "0.0.0",
-  "description": "A ChatGPT desktop app that lets you quickly switch between prompts.",
+  "description": "A ChatGPT desktop app that lets you bookmark and quick add your favourite prompts.",
   "keywords": [
     "chatgpt",
     "openai",
     "electron",
-    "macos"
+    "macos",
+    "AI"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PaulTreanor/chatgpt-promptly.git"
+    "url": "git+https://github.com/PaulTreanor/PromptMarker.git"
   },
   "scripts": {
     "dev": "vite",

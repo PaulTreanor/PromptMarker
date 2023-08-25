@@ -1,21 +1,20 @@
-# ⚡️ ChatGPT Promplty
+# 🔖 PromptMarker 
 
-A ChatGPT desktop app that lets you quickly switch between prompts. 
+**A ChatGPT desktop app that lets you bookmark and quick add your favourite prompts.**
 
 The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly add and remove stored reusable prompts in a collapsable sidebar. 
 
 ### How to use 
 - Log into ChatGPT through the app. 
-- Click on the arrow icon on the top right of the app to expand the sidebar. 
+- Click on the expand icon on the top right of the app to show the sidebar. 
 - Add a new prompt 
-- Double click on a ptompt to edit or delete it 
+- Click the settings icon on a prompt to edit or delete it 
 - Click on a prompt to add it to ChatGPT's input box
 
 ### Implementation
+PromptMarker is built on top of Electron, React, Tailwinds, and Vite. 
 
-ChatGPT Promptly is built on top of Electron, React, Tailwinds, and Vite. 
-
-### Setup
+### Setup (for developers)
 **Setup dev env**
 ```bash
 # Download the repo
@@ -30,5 +29,3 @@ npm run dev
 npm run test:unit
 ```
 
-### Notes 
-- `buildResources` (for icon) is defined in `electron-builder.json5`
