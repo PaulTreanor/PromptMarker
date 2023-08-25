@@ -6,6 +6,7 @@
 
 The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly add and remove stored reusable prompts in a collapsable sidebar. 
 
+> [!WARNING]
 > This app is a prerelease non-notarised MacOS app, which means if you want to try it out you **must build it yourself** (see "Build the app" instructions). 
 
 ### How to use 
