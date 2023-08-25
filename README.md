@@ -2,6 +2,8 @@
 
 **A ChatGPT desktop app that lets you bookmark and quick add your favourite prompts.**
 
+![Alt text](screenshot.png)
+
 The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly add and remove stored reusable prompts in a collapsable sidebar. 
 
 ### How to use 
