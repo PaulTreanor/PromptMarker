@@ -30,3 +30,5 @@ npm run dev
 npm run test:unit
 ```
 
+### Notes 
+- `buildResources` (for icon) is defined in `electron-builder.json5`

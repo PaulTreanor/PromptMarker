@@ -6,7 +6,8 @@
   "appId": "YourAppID",
   "asar": true,
   "directories": {
-    "output": "release/${version}"
+    "output": "release/${version}",
+    "buildResources": 'buildResources'
   },
   "files": [
     "dist-electron",
