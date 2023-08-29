@@ -39,3 +39,10 @@ npm run test:unit
 npm run build
 # Built app will be in /releases directory
 ```
+
+**Notarising MacOS Apps**
+
+https://github.com/electron/notarize
+```bash
+node notarizer.js`
+```
