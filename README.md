@@ -1,13 +1,15 @@
 # 🔖 PromptMarker 
 
-**A ChatGPT desktop app that lets you bookmark and quick add your favourite prompts.**
+**A ChatGPT MacOS app that lets you bookmark and quick add your favourite prompts.**
 
 ![Alt text](screenshot.png)
 
 The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly add and remove stored reusable prompts in a collapsable sidebar. 
 
-> [!WARNING]
-> This app is a prerelease non-notarised MacOS app, which means if you want to try it out you **must build it yourself** (see "Build the app" instructions). 
+### Installation 
+- Go to this repo's [releases](https://github.com/PaulTreanor/PromptMarker/releases/tag/1.0.0)
+- Click `PromptMarker.dmg` in Assets to download
+- Run the file to install the MacOS app. 
 
 ### How to use 
 - Log into ChatGPT through the app. 
@@ -38,11 +40,4 @@ npm run test:unit
 ```bash
 npm run build
 # Built app will be in /releases directory
-```
-
-**Notarising MacOS Apps**
-
-https://github.com/electron/notarize
-```bash
-node notarizer.js`
 ```
