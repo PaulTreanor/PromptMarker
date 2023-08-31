@@ -7,8 +7,7 @@
 The app embdeds ChatGPT into a desktop app as a webview, and lets you quickly add and remove stored reusable prompts in a collapsable sidebar. 
 
 ### Installation 
-- Go to this repo's [releases](https://github.com/PaulTreanor/PromptMarker/releases/tag/1.0.0)
-- Click `PromptMarker.dmg` in Assets to download
+- Download PromptMarker from [Gumroad](https://paultreanor.gumroad.com/l/promptmarker) or from [this repo's releases](https://github.com/PaulTreanor/PromptMarker/releases/tag/1.0.0)
 - Run the file to install the MacOS app. 
 
 ### How to use 
