@@ -7,7 +7,7 @@ require('dotenv').config();
 async function packageTask () {
     const options = {
         appBundleId: 'com.paultreanor.promptmarker',
-        appPath: './release/0.0.0/PromptMarker.dmg',
+        appPath: './release/0.1.1/PromptMarker.dmg',
         appleId: process.env.APPLE_ID,
         appleIdPassword: process.env.APPLE_ID_PASSWORD,
         teamId: process.env.TEAM_ID

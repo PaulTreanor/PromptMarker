@@ -1,9 +1,8 @@
 {
   "name": "PromptMarker",
-  "version" : "0.1.0",
+  "version" : "0.1.1",
   "author": "Paul Treanor",
   "license": "MIT",
-  "version": "0.0.0",
   "description": "A ChatGPT desktop app that lets you bookmark and quick add your favourite prompts.",
   "keywords": [
     "chatgpt",
