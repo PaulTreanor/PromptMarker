@@ -1,22 +1,22 @@
-/**
- * @see https://www.electron.build/configuration/configuration
- */
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
-  "appId": "YourAppID",
+  "appId": "com.paultreanor.promptmarker",
   "asar": true,
   "directories": {
     "output": "release/${version}",
-    "buildResources": 'buildResources'
+    "buildResources": "buildResources"
   },
   "files": [
     "dist-electron",
     "dist"
   ],
   "mac": {
-    "artifactName": "${productName}_${version}.${ext}",
+    "artifactName": "${productName}_${version}_${arch}.${ext}",
     "target": [
-      "dmg"
+      {
+        "target": "dmg",
+        "arch": "universal"
+      }
     ]
   },
   "win": {
