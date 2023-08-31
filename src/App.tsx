@@ -129,7 +129,7 @@ function App (): ReactElement {
         </div>
         <div id="sidebar" className={`px-5 ${isSidebarMinimized ? 'w-24 px-1' : 'w-96 sm:w-1/4 border-l'} flex flex-col`}>
           <button onClick={toggleSidebar} className={'mt-4 mb-1 h-11 text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 font-bold py-2 px-4 rounded-lg'}>
-            {isSidebarMinimized ? (<img src="/chevron-right.svg" alt="vite logo" className="" />) : 'Collapse'}
+            {isSidebarMinimized ? (<SVGIcon />) : 'Collapse'}
           </button>
 
           {!isSidebarMinimized && (
@@ -171,3 +171,11 @@ function App (): ReactElement {
 }
 
 export default App
+
+function SVGIcon (): ReactElement {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+      <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+    </svg>
+  )
+}
