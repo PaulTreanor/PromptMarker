@@ -120,6 +120,36 @@ function App (): ReactElement {
     setIsSidebarMinimized(!isSidebarMinimized)
   }
 
+  const toggleHistorySidebar = (): void => {
+    // execute the keyboard shortcut (cmd + shift + S) to open the history sidebar within the webview
+    const script = `
+      var e = new KeyboardEvent('keydown', {bubbles: true, cancelable: true, key: 'S', shiftKey: true, metaKey: true});
+      document.dispatchEvent(e);
+    `
+    if (webviewRef.current != null) {
+      webviewRef.current.executeJavaScript(script)
+    }
+  }
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // On macOS, `metaKey` is the Command key, and `ctrlKey` is the Control key.
+      // On Windows/Linux, `ctrlKey` is the Control key.
+      // We check for both `metaKey` and `ctrlKey` to cover all platforms.
+      if ((event.metaKey || event.ctrlKey) && event.shiftKey && (event.key === 'S' || event.key === 's')) {
+        toggleHistorySidebar()
+      }
+    }
+
+    // Add event listener
+    window.addEventListener('keydown', handleKeyPress)
+
+    // Clean up
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [])
+
   return (
     <>
       <div className="flex">
@@ -136,6 +166,11 @@ function App (): ReactElement {
             <>
               <button onClick={RemovePrompt} className='mt-2 mb-1 h-11 text-red-600 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold py-2 px-4 rounded-lg'>
                 Clear Prompt
+              </button>
+
+              {/* cmd + shift + S should trigger this button also  */}
+              <button onClick={toggleHistorySidebar} className='mt-2 mb-1 h-11 text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 font-bold py-2 px-4 rounded-lg'>
+                History <span className="text-blue-600">⌘⇧S</span>
               </button>
 
               <h3 className="pt-5 text-xl font-bold">Your prompts</h3>
